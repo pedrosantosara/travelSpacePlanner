@@ -1,9 +1,13 @@
 const express = require('express');
-
+const travelPlannerController = require('../controllers/travelPlannerController');
 const routes = express();
 
-routes.get('/travel-plans', (req, res) => {
-  res.send('Hello World!');
-});
+
+routes.post('/', travelPlannerController.createTravelPlan);
+routes.get('/', travelPlannerController.getAllTravelPlans);
+routes.get('/:id', travelPlannerController.getTravelPlansById);
+routes.put('/:id', travelPlannerController.updateTravelPlan);
+routes.delete('/:id', travelPlannerController.deleteTravelPlan);
+
 
 module.exports = routes;
